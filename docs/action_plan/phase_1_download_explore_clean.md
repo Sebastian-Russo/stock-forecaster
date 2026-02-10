@@ -115,3 +115,136 @@ CREATING VISUALIZATIONS
 ✓ Phase 1.2 complete! Data explored (no changes made).
 
 ###
+ $ python3 src/data/02_explore_data.py
+============================================================
+EXPLORING STOCK DATA
+============================================================
+
+Loading AAPL data...
+
+============================================================
+DATA STRUCTURE
+============================================================
+
+Shape: (1254, 5)
+Columns: ['Open', 'High', 'Low', 'Close', 'Volume']
+Date range: 2021-02-10 00:00:00-05:00 to 2026-02-06 00:00:00-05:00
+Total trading days: 1254
+
+First 5 rows:
+                                 Open        High         Low       Close    Volume
+Date
+2021-02-10 00:00:00-05:00  133.055306  133.552518  131.027497  131.992661  73046600
+2021-02-11 00:00:00-05:00  132.489803  132.967513  130.413262  131.739136  64280000
+2021-02-12 00:00:00-05:00  130.978735  132.129118  130.335293  131.973129  60145100
+2021-02-16 00:00:00-05:00  132.090143  132.597084  129.457883  129.847855  80576300
+2021-02-17 00:00:00-05:00  127.956539  128.902200  126.221206  127.556824  97918500
+
+Last 5 rows:
+                                 Open        High         Low       Close    Volume
+Date
+2026-02-02 00:00:00-05:00  260.029999  270.489990  259.209991  270.010010  73913400
+2026-02-03 00:00:00-05:00  269.200012  271.880005  267.609985  269.480011  64394700
+2026-02-04 00:00:00-05:00  272.290009  278.950012  272.290009  276.489990  90545700
+2026-02-05 00:00:00-05:00  278.130005  279.500000  273.230011  275.910004  52977400
+2026-02-06 00:00:00-05:00  277.119995  280.910004  276.929993  278.119995  50420700
+
+Data types:
+Open      float64
+High      float64
+Low       float64
+Close     float64
+Volume      int64
+dtype: object
+
+============================================================
+DATA QUALITY
+============================================================
+
+Missing values per column:
+Open      0
+High      0
+Low       0
+Close     0
+Volume    0
+dtype: int64
+
+✓ No missing values
+
+============================================================
+STATISTICAL SUMMARY
+============================================================
+              Open         High          Low        Close        Volume
+count  1254.000000  1254.000000  1254.000000  1254.000000  1.254000e+03
+mean    182.004198   183.973989   180.222872   182.185941  6.871059e+07
+std      41.004333    41.299530    40.736499    41.041792  2.931759e+07
+min     116.043170   117.378803   113.293933   113.440170  1.791060e+07
+25%     147.107421   148.926110   145.634269   147.711830  4.807408e+07
+50%     173.296437   175.305498   171.649858   173.235298  6.179185e+07
+75%     213.395474   215.324387   211.260067   213.355507  8.248288e+07
+max     286.200012   288.619995   283.299988   286.190002  3.186799e+08
+
+============================================================
+PRICE ANALYSIS
+============================================================
+Lowest Close: $113.44
+Highest Close: $286.19
+Average Close: $182.19
+Current Close: $278.12
+
+============================================================
+VOLATILITY ANALYSIS
+============================================================
+Mean daily return: 0.075%
+Std deviation: 1.744%
+Best day: +15.33%
+Worst day: -9.25%
+
+============================================================
+CREATING VISUALIZATIONS
+============================================================
+✓ Saved: results/plots/aapl_exploration.png
+✓ Saved: results/plots/aapl_recent.png
+
+✓ Phase 1.2 complete! Data explored (no changes made).
+(venv) sebastian~/ai-projects/stock-forecaster(main) $ python3 src/data/03_explore_data.py
+python3: can't open file '/home/sebastian/ai-projects/stock-forecaster/src/data/03_explore_data.py': [Errno 2] No such file or directory
+(venv) sebastian~/ai-projects/stock-forecaster(main) $ python3 src/data/03_clean_data.py
+============================================================
+CLEANING STOCK DATA
+============================================================
+
+============================================================
+Cleaning AAPL
+============================================================
+Loaded: 1254 rows
+Missing values: 0
+  ✓ No missing values to handle
+  ✓ No duplicate dates
+
+✓ Cleaned data saved: data/processed/AAPL_clean.csv
+  Final shape: (1254, 6)
+
+============================================================
+Cleaning TSLA
+============================================================
+Loaded: 1254 rows
+Missing values: 0
+  ✓ No missing values to handle
+  ✓ No duplicate dates
+
+✓ Cleaned data saved: data/processed/TSLA_clean.csv
+  Final shape: (1254, 6)
+
+============================================================
+Cleaning GOOGL
+============================================================
+Loaded: 1254 rows
+Missing values: 0
+  ✓ No missing values to handle
+  ✓ No duplicate dates
+
+✓ Cleaned data saved: data/processed/GOOGL_clean.csv
+  Final shape: (1254, 6)
+
+✓ Phase 1.3 complete! All data cleaned and saved to data/processed/
