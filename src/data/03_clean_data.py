@@ -1,7 +1,7 @@
 """
 Phase 1.3: Clean stock data
 ONE JOB: Fix data quality issues
-Handle missing values, remove outliers if needed
+Handle missing values, remove outliers if needed, normalize dates
 """
 import pandas as pd
 
@@ -17,8 +17,19 @@ for ticker in tickers:
     print(f"{'='*60}")
 
     # Load raw data
-    df = pd.read_csv(f'data/raw/{ticker}_historical.csv', index_col='Date', parse_dates=True)
+    df = pd.read_csv(f'data/raw/{ticker}_historical.csv')
     print(f"Loaded: {len(df)} rows")
+
+    # Handle Date column - convert to datetime and remove timezone
+    print("Normalizing dates...")
+    # First parse the datetime string
+    df['Date'] = pd.to_datetime(df['Date'], utc=True)
+    # Remove timezone by converting to timezone-naive
+    df['Date'] = df['Date'].dt.tz_localize(None)
+    print(f"  ✓ Dates normalized (timezone removed)")
+
+    # Set Date as index
+    df.set_index('Date', inplace=True)
 
     # Check for missing values
     missing_before = df.isnull().sum().sum()
@@ -54,5 +65,8 @@ for ticker in tickers:
     df.to_csv(filename)
     print(f"\n✓ Cleaned data saved: {filename}")
     print(f"  Final shape: {df.shape}")
+
+    # Verify the date format in saved file
+    print(f"  Sample date from saved file: {df.index[0]}")
 
 print("\n✓ Phase 1.3 complete! All data cleaned and saved to data/processed/")
