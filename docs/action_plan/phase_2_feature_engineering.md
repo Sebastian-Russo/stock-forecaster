@@ -154,7 +154,8 @@ Processing AAPL
 
 Phase 2 Complete!
 
-Feature Engineering Summary
+# Feature Engineering Summary
+
 ✅ Features Created (40 total per stock)
 1. Lag Features (12): Yesterday's values, last week's values
 
